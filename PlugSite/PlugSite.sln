@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "C:\...\PlugSite\", ".", "{23E72310-010A-4A82-9EEC-FD01031122BA}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.VirtualPath = "/PlugSite"
+		Debug.AspNetCompiler.PhysicalPath = "..\PlugSite\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\PlugSite\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/PlugSite"
+		Release.AspNetCompiler.PhysicalPath = "..\PlugSite\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\PlugSite\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "32659"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{23E72310-010A-4A82-9EEC-FD01031122BA}.Debug|.NET.ActiveCfg = Debug|.NET
+		{23E72310-010A-4A82-9EEC-FD01031122BA}.Debug|.NET.Build.0 = Debug|.NET
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

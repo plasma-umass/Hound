@@ -1,0 +1,56 @@
+######################################################################
+##
+##  API Extention to Measure time slept.
+##
+##  Microsoft Research Detours Package.  Version 2.1 (Build_207)
+##
+##  Copyright (c) Microsoft Corporation.  All rights reserved.
+##
+
+CLIB=/MT
+!include ..\common.mak
+
+# Override common.mak to use local rockall
+
+RCKINCARGS = "/Irockall\Code\Rockall\Interface" "/Irockall\Code\Common\Library"
+#RCKLIBS = rockall\Project\Common\Library\Debug\Library.lib dbghelp.lib
+RCKLIBS = rockall\Build\Rockall\Release\Rockall.lib rockall\Project\Common\Library\Release\Library.lib rockall\Project\Rockall\Heap\Release\Heap.lib dbghelp.lib
+
+CFLAGS=/nologo /Zi $(CLIB) /Gm- /W4 /O1 /Oy-
+CFLAGS=$(CFLAGS) "/I$(DTRINCD)" "/I$(INCD)" $(RCKINCARGS)
+
+##############################################################################
+
+OBS=metadata_map.obj site.obj AOChunk.obj AOHeap.obj AOCommon.obj AOLargeObject.obj plugheap.obj block_factory.obj output.obj
+SRCS=replheap.cpp metadata_map.cpp site.cpp AOChunk.cpp AOHeap.cpp AOCommon.cpp AOLargeObject.cpp plugheap.cpp block_factory.cpp output.cpp
+LIBS=$(LIBS) psapi.lib
+
+##############################################################################
+
+all: dirs \
+	$(BIND)\plugleaks.dll
+
+##############################################################################
+
+dirs:
+	if not exist $(BIND) mkdir $(BIND)
+
+$(BIND)\plugleaks.dll $(BIND)\plugleaks.lib: $(OBS) $(DEPS) AOHeap.hpp
+	link $(LINKFLAGS) /DLL /DEBUG /incremental:no /subsystem:console \
+		/out:$@ \
+		/pdb:plugleaks.pdb \
+		/entry:$(DLLENTRY) \
+		/NODEFAULTLIB:MSVCRT.lib \
+		$(LIBS) $(RCKLIBS) \
+		$(OBS)
+		
+$(OBS): $(SRCS) $(DEPS)
+	cl $(CFLAGS) /MTd /DEBUG /DCOMPILING_PLUGLEAKS_DLL /c $(SRCS)
+
+##############################################################################
+
+clean:
+	-del *~ *.obj *.sbr 2>nul
+	-del $(BIND)\plugleaks.dll 2>nul
+
+################################################################# End of File.
