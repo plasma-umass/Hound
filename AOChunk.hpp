@@ -1,5 +1,5 @@
-#ifndef __AO_CHUNK_H__
-#define __AO_CHUNK_H__
+#ifndef AO_CHUNK_H__
+#define AO_CHUNK_H__
 
 #include "platform.hpp"
 #include <assert.h>
