@@ -1,7 +1,7 @@
 /* a Heap Layers wrapper for a Rockall-interface heap */
 
-#ifndef __ROCKLAYER_H__
-#define __ROCKLAYER_H__
+#ifndef HOUND_ROCKLAYER_H__
+#define HOUND_ROCKLAYER_H__
 
 #include <cstdio>
 

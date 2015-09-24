@@ -1,5 +1,5 @@
-#ifndef __PORT_SPINLOCK_H__
-#define __PORT_SPINLOCK_H__
+#ifndef HOUND_PORT_SPINLOCK_H__
+#define HOUND_PORT_SPINLOCK_H__
 
 #include "recursivelock.h"
 #include "spinlock.h"

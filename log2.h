@@ -1,5 +1,5 @@
-#ifndef _LOG2_H_
-#define _LOG2_H_
+#ifndef HOUND_LOG2_H_
+#define HOUND_LOG2_H_
 
 #include <stdlib.h>
 

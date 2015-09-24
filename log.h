@@ -1,5 +1,5 @@
-#ifndef __LOG_H__
-#define __LOG_H__
+#ifndef HOUND_LOG_H__
+#define HOUND_LOG_H__
 
 static inline int log2 (size_t sz)
 {

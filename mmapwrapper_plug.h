@@ -28,8 +28,8 @@
 This Is exactly MmapWrapper from HL, but maps SHARED rather than PRIVATE to support page aliasing in Plug
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*/
 
-#ifndef _MMAPWRAPPER_PLUG_H_
-#define _MMAPWRAPPER_PLUG_H_
+#ifndef HOUND_MMAPWRAPPER_PLUG_H_
+#define HOUND_MMAPWRAPPER_PLUG_H_
 
 #if defined(_WIN32)
 #include <windows.h>

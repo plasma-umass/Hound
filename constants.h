@@ -1,5 +1,5 @@
-#ifndef __AOH_CONSTANTS_H__
-#define __AOH_CONSTANTS_H__
+#ifndef HOUND_AOH_CONSTANTS_H__
+#define HOUND_AOH_CONSTANTS_H__
 
 #include <sys/types.h>
 

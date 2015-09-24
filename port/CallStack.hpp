@@ -1,5 +1,5 @@
-#ifndef __CALLSTACK_H__
-#define __CALLSTACK_H__
+#ifndef HOUND_CALLSTACK_H__
+#define HOUND_CALLSTACK_H__
 
 #include "../platform.hpp"
 #include "capture_callsite.h"

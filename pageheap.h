@@ -24,8 +24,8 @@
 
 */
 
-#ifndef _PAGEHEAP_H_
-#define _PAGEHEAP_H_
+#ifndef HOUND_PAGEHEAP_H_
+#define HOUND_PAGEHEAP_H_
 
 #if defined(_WIN32)
 #include <windows.h>

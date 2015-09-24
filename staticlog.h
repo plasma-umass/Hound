@@ -7,8 +7,8 @@
  * @note   Copyright (C) 2005 by Emery Berger, University of Massachusetts Amherst.
  */
 
-#ifndef _STATICLOG_H_
-#define _STATICLOG_H_
+#ifndef HOUND_STATICLOG_H_
+#define HOUND_STATICLOG_H_
 
 #include "staticif.h"
 

@@ -1,5 +1,5 @@
-#ifndef __CONFIG_H__
-#define __CONFIG_H__
+#ifndef HOUND_CONFIG_H__
+#define HOUND_CONFIG_H__
 
 #include <sys/types.h>
 

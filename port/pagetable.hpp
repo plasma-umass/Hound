@@ -1,5 +1,5 @@
-#ifndef __PAGE_TABLE_H__
-#define __PAGE_TABLE_H__
+#ifndef HOUND_PAGE_TABLE_H__
+#define HOUND_PAGE_TABLE_H__
 
 // for size_t
 #include <sys/mman.h>
