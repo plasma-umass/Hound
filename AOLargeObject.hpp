@@ -1,5 +1,5 @@
-#ifndef __AOLARGE_OBJECT__
-#define __AOLARGE_OBJECT__
+#ifndef HOUND_AOLARGE_OBJECT
+#define HOUND_AOLARGE_OBJECT
 
 #include "AOCommon.hpp"
 #include "mmapwrapper.h"

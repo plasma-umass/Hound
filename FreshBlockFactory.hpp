@@ -1,5 +1,5 @@
-#ifndef __FRESH_BLOCK_FACTORY_H__
-#define __FRESH_BLOCK_FACTORY_H__
+#ifndef HOUND_FRESH_BLOCK_FACTORY_H
+#define HOUND_FRESH_BLOCK_FACTORY_H
 
 #include "AOBlock.hpp"
 

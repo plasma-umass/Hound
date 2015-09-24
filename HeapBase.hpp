@@ -1,5 +1,5 @@
-#ifndef __HEAP_BASE_H__
-#define __HEAP_BASE_H__
+#ifndef HOUND_HEAP_BASE_H
+#define HOUND_HEAP_BASE_H
 
 #include "port/Spinlock.hpp"
 

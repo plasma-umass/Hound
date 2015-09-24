@@ -1,5 +1,5 @@
-#ifndef __BPTR_ALLOC_POLICY__
-#define __BPTR_ALLOC_POLICY__
+#ifndef HOUND_BPTR_ALLOC_POLICY
+#define HOUND_BPTR_ALLOC_POLICY
 
 template <class Super>
 class BptrAllocPolicy : public Super {

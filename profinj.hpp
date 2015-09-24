@@ -1,5 +1,5 @@
-#ifndef __PROFINJ_H__
-#define __PROFINJ_H__
+#ifndef HOUND_PROFINJ_H
+#define HOUND_PROFINJ_H
 
 typedef unsigned long ULONG;
 typedef void VOID;

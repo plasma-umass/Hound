@@ -1,5 +1,5 @@
-#ifndef __ARCHIPELAGO_AGING_QUEUE_H__
-#define __ARCHIPELAGO_AGING_QUEUE_H__
+#ifndef HOUND_ARCHIPELAGO_AGING_QUEUE_H
+#define HOUND_ARCHIPELAGO_AGING_QUEUE_H
 
 #include "EvictionManager.hpp"
 #include "ActiveList.hpp"

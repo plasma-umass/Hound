@@ -1,5 +1,5 @@
-#ifndef __GLOBAL_METADATA_HEAP_H__
-#define __GLOBAL_METADATA_HEAP_H__
+#ifndef HOUND_GLOBAL_METADATA_HEAP_H
+#define HOUND_GLOBAL_METADATA_HEAP_H
 
 #include "platform.hpp"
 

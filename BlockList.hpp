@@ -1,5 +1,5 @@
-#ifndef __BLOCK_LIST_H__
-#define __BLOCK_LIST_H__
+#ifndef HOUND_BLOCK_LIST_H
+#define HOUND_BLOCK_LIST_H
 
 #include <cassert>
 

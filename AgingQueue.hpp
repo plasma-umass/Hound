@@ -1,5 +1,5 @@
-#ifndef __AGING_QUEUE_H__
-#define __AGING_QUEUE_H__
+#ifndef HOUND_AGING_QUEUE_H
+#define HOUND_AGING_QUEUE_H
 
 #include "AOMergedBlock.hpp"
 #include "AOCommon.hpp"

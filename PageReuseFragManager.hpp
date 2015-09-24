@@ -1,5 +1,5 @@
-#ifndef __PAGE_REUSE_FRAG_MANAGER_H__
-#define __PAGE_REUSE_FRAG_MANAGER_H__
+#ifndef HOUND_PAGE_REUSE_FRAG_MANAGER_H
+#define HOUND_PAGE_REUSE_FRAG_MANAGER_H
 
 #include "FragManager.hpp"
 

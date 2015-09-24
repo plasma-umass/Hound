@@ -1,5 +1,5 @@
-#ifndef __RECYCLING_BLOCK_FACTORY__
-#define __RECYCLING_BLOCK_FACTORY__
+#ifndef HOUND_RECYCLING_BLOCK_FACTORY
+#define HOUND_RECYCLING_BLOCK_FACTORY
 
 template<template<size_t N> class BlockType>
 class RecyclingBlockFactory {

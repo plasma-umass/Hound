@@ -1,5 +1,5 @@
-#ifndef __ARCHIPELAGO_BLOCK_H__
-#define __ARCHIPELAGO_BLOCK_H__
+#ifndef HOUND_ARCHIPELAGO_BLOCK_H
+#define HOUND_ARCHIPELAGO_BLOCK_H
 
 #include "mmapwrapper_plug.h"
 #include "global_metadata_heap.hpp"

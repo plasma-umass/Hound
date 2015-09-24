@@ -1,5 +1,5 @@
-#ifndef __PAGE_BLOCK_H__
-#define __PAGE_BLOCK_H__
+#ifndef HOUND_PAGE_BLOCK_H
+#define HOUND_PAGE_BLOCK_H
 
 extern int total_pages;
 

@@ -1,5 +1,5 @@
-#ifndef __ARCHIPELAGO_HEAP_H__
-#define __ARCHIPELAGO_HEAP_H__
+#ifndef HOUND_ARCHIPELAGO_HEAP_H
+#define HOUND_ARCHIPELAGO_HEAP_H
 
 #include "constants.h"
 

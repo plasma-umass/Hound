@@ -1,5 +1,5 @@
-#ifndef __INACTIVE_LIST_HPP
-#define __INACTIVE_LIST_HPP
+#ifndef HOUND_INACTIVE_LIST_HPP
+#define HOUND_INACTIVE_LIST_HPP
 
 #include "AOCommon.hpp"
 #include "IEvictionManager.hpp"

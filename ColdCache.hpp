@@ -1,5 +1,5 @@
-#ifndef __COLD_CACHE_H__
-#define __COLD_CACHE_H__
+#ifndef HOUND_COLD_CACHE_H
+#define HOUND_COLD_CACHE_H
 
 #include "IEvictionManager.hpp"
 #include "AOCommon.hpp"

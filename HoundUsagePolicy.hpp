@@ -1,5 +1,5 @@
-#ifndef __HOUND_USAGE_POLICY__
-#define __HOUND_USAGE_POLICY__
+#ifndef HOUND_HOUND_USAGE_POLICY
+#define HOUND_HOUND_USAGE_POLICY
 
 template<class Super>
 class HoundUsagePolicy : public Super {

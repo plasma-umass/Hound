@@ -1,5 +1,5 @@
-#ifndef __PROTECTED_LIST__
-#define __PROTECTED_LIST__
+#ifndef HOUND_PROTECTED_LIST
+#define HOUND_PROTECTED_LIST
 
 #include "BlockList.hpp"
 

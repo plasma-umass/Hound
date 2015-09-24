@@ -1,5 +1,5 @@
-#ifndef __SITE_H__
-#define __SITE_H__
+#ifndef HOUND_SITE_H__
+#define HOUND_SITE_H__
 
 #include "CallStack.hpp"
 #include "constants.h"

@@ -1,5 +1,5 @@
-#ifndef __ACTIVE_LIST_H__
-#define __ACTIVE_LIST_H__
+#ifndef HOUND_ACTIVE_LIST_H
+#define HOUND_ACTIVE_LIST_H
 
 class ActiveList : public BlockListImpl<AOCommon> {
   using BlockListImpl<AOCommon>::Node;

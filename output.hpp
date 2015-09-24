@@ -1,5 +1,5 @@
-#ifndef __OUTPUT_H__
-#define __OUTPUT_H__
+#ifndef HOUND_OUTPUT_H
+#define HOUND_OUTPUT_H
 
 #include <string>
 

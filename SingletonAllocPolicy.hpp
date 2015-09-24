@@ -1,5 +1,5 @@
-#ifndef __SINGLETON_ALLOC_POLICY_H__
-#define __SINGLETON_ALLOC_POLICY_H__
+#ifndef HOUND_SINGLETON_ALLOC_POLICY_H
+#define HOUND_SINGLETON_ALLOC_POLICY_H
 
 #include <cstdlib>
 

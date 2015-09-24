@@ -1,5 +1,5 @@
-#ifndef __PLUG_HEAP_H__
-#define __PLUG_HEAP_H__
+#ifndef HOUND_PLUG_HEAP_H
+#define HOUND_PLUG_HEAP_H
 
 #pragma warning(disable:4251) // non-DLL linkage warning
 

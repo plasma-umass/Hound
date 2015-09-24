@@ -1,5 +1,5 @@
-#ifndef __AOBLOCK_H__
-#define __AOBLOCK_H__
+#ifndef HOUND_AOBLOCK_H
+#define HOUND_AOBLOCK_H
 
 #include "platform.hpp"
 #include "PageBlock.hpp"

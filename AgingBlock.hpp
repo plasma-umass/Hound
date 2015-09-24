@@ -1,5 +1,5 @@
-#ifndef __AGING_BLOCK_H__
-#define __AGING_BLOCK_H__
+#ifndef HOUND_AGING_BLOCK_H
+#define HOUND_AGING_BLOCK_H
 
 #include <unistd.h>
 #include <cstdio>

@@ -1,5 +1,5 @@
-#ifndef __VC_FRAG_MANAGER_H__
-#define __VC_FRAG_MANAGER_H__
+#ifndef HOUND_VC_FRAG_MANAGER_H
+#define HOUND_VC_FRAG_MANAGER_H
 
 #include "FragManager.hpp"
 

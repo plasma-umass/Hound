@@ -1,5 +1,5 @@
-#ifndef __PLATFORM_H__
-#define __PLATFORM_H__
+#ifndef HOUND_PLATFORM_H
+#define HOUND_PLATFORM_H
 
 #undef ELIDE_FREE // 0x698baf14
 

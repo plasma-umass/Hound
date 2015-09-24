@@ -1,5 +1,5 @@
-#ifndef __METADATA_MAP__
-#define __METADATA_MAP__
+#ifndef HOUND_METADATA_MAP
+#define HOUND_METADATA_MAP
 
 #include "platform.hpp"
 #include "site.hpp"

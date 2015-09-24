@@ -1,5 +1,5 @@
-#ifndef __BITMAP_BASE_H__
-#define __BITMAP_BASE_H__
+#ifndef HOUND_BITMAP_BASE_H
+#define HOUND_BITMAP_BASE_H
 
 template<size_t N>
 class BitmapBase {

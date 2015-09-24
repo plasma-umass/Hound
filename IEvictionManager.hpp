@@ -1,5 +1,5 @@
-#ifndef __IEVICTION_MANAGER_H__
-#define __IEVICTION_MANAGER_H__
+#ifndef HOUND_IEVICTION_MANAGER_H
+#define HOUND_IEVICTION_MANAGER_H
 
 class IEvictionManager {
 public:

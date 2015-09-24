@@ -1,3 +1,6 @@
+#ifndef HOUND_THRESHOLDMODEL
+#define HOUND_THRESHOLDMODEL
+
 class ThresholdModel {
 public:
 	ThresholdModel() : _maxstale(1) {}
@@ -24,3 +27,5 @@ public:
 //private:
 	double _maxstale;
 };
+
+#endif

@@ -1,5 +1,5 @@
-#ifndef __AO_HEAP_H__
-#define __AO_HEAP_H__
+#ifndef HOUND_AO_HEAP_H
+#define HOUND_AO_HEAP_H
 
 #include "platform.hpp"
 

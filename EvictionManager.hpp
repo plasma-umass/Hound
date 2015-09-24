@@ -1,5 +1,5 @@
-#ifndef __EVICTION_MANAGER_H__
-#define __EVICTION_MANAGER_H__
+#ifndef HOUND_EVICTION_MANAGER_H
+#define HOUND_EVICTION_MANAGER_H
 
 #include <sys/time.h>
 #include <sys/resource.h>

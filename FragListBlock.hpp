@@ -1,5 +1,5 @@
-#ifndef __FRAG_LIST_BLOCK_H__
-#define __FRAG_LIST_BLOCK_H__
+#ifndef HOUND_FRAG_LIST_BLOCK_H
+#define HOUND_FRAG_LIST_BLOCK_H
 
 #include "AOMergedBlock.hpp"
 

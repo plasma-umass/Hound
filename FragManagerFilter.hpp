@@ -1,5 +1,5 @@
-#ifndef __FRAG_MANAGER_FILTER_H__
-#define __FRAG_MANAGER_FILTER_H__
+#ifndef HOUND_FRAG_MANAGER_FILTER_H
+#define HOUND_FRAG_MANAGER_FILTER_H
 
 template<unsigned int N>
 class AOMergable;

@@ -1,5 +1,5 @@
-#ifndef __MPROTECT_WRAPPER_H__
-#define __MPROTECT_WRAPPER_H__
+#ifndef HOUND_MPROTECT_WRAPPER_H
+#define HOUND_MPROTECT_WRAPPER_H
 
 #if defined(_WIN32)
 void protect_range(void * start,size_t len) {

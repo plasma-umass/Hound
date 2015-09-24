@@ -1,6 +1,6 @@
 
-#ifndef __AO_MERGED_H__
-#define __AO_MERGED_H__
+#ifndef HOUND_AO_MERGED_H
+#define HOUND_AO_MERGED_H
 
 #include "constants.h"
 #include "AOMergeable.hpp"

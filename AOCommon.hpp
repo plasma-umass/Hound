@@ -1,5 +1,5 @@
-#ifndef __AOCOMMON_H__
-#define __AOCOMMON_H__
+#ifndef HOUND_AOCOMMON_H
+#define HOUND_AOCOMMON_H
 
 #include "platform.hpp"
 #include <assert.h>

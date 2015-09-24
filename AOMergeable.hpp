@@ -1,5 +1,5 @@
-#ifndef __AO_MERGEABLE_H__
-#define __AO_MERGEABLE_H__
+#ifndef HOUND_AO_MERGEABLE_H
+#define HOUND_AO_MERGEABLE_H
 
 #include "config.h"
 

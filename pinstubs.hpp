@@ -1,5 +1,5 @@
-#ifndef __PIN_STUBS_H__
-#define __PIN_STUBS_H__
+#ifndef HOUND_PIN_STUBS_H
+#define HOUND_PIN_STUBS_H
 
 #include <sys/types.h>
 

@@ -1,5 +1,5 @@
-#ifndef AO_CHUNK_H__
-#define AO_CHUNK_H__
+#ifndef HOUND_AO_CHUNK_H
+#define HOUND_AO_CHUNK_H
 
 #include "platform.hpp"
 #include <assert.h>

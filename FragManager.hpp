@@ -1,5 +1,5 @@
-#ifndef __FRAG_MANAGER_H__
-#define __FRAG_MANAGER_H__
+#ifndef HOUND_FRAG_MANAGER_H
+#define HOUND_FRAG_MANAGER_H
 
 #include "AOMergedBlock.hpp"
 #include "AOCommon.hpp"
