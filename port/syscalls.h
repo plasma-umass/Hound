@@ -1,7 +1,7 @@
 // -*- C++ -*-
 
-#ifndef _MEMTRACE_H_
-#define _MEMTRACE_H_
+#ifndef HOUND_MEMTRACE_H
+#define HOUND_MEMTRACE_H
 
 #include <dlfcn.h>
 #include <fcntl.h>

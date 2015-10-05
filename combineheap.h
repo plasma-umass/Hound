@@ -1,7 +1,7 @@
 // -*- C++ -*-
 
-#ifndef HOUND_COMBINEHEAP_H_
-#define HOUND_COMBINEHEAP_H_
+#ifndef HOUND_COMBINEHEAP_H
+#define HOUND_COMBINEHEAP_H
 
 template <class SmallHeap,
 	  class BigHeap,

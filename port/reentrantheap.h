@@ -1,5 +1,5 @@
-#ifndef _REENTRANTHEAP_H_
-#define _REENTRANTHEAP_H_
+#ifndef HOUND_REENTRANTHEAP_H
+#define HOUND_REENTRANTHEAP_H
 
 /**
  * @class ReentrantHeap

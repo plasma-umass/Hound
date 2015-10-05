@@ -7,8 +7,8 @@
  * @note   Copyright (C) 2005 by Emery Berger, University of Massachusetts Amherst.
  */
 
-#ifndef _MMAPALLOC_H_
-#define _MMAPALLOC_H_
+#ifndef HOUND_MMAPALLOC_H
+#define HOUND_MMAPALLOC_H
 
 #include "mmapwrapper.h"
 

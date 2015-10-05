@@ -1,5 +1,5 @@
-#ifndef HOUND_BUMPALLOC_H_
-#define HOUND_BUMPALLOC_H_
+#ifndef HOUND_BUMPALLOC_H
+#define HOUND_BUMPALLOC_H
 
 /**
  * @class BumpAlloc

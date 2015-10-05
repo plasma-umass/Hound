@@ -1,5 +1,5 @@
-#ifndef HOUND_LARGEHEAP_H_
-#define HOUND_LARGEHEAP_H_
+#ifndef HOUND_LARGEHEAP_H
+#define HOUND_LARGEHEAP_H
 
 #include <assert.h>
 

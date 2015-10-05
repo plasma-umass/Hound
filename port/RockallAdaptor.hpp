@@ -1,5 +1,5 @@
-#ifndef HOUND_ROCKALL_ADAPTOR_H__
-#define HOUND_ROCKALL_ADAPTOR_H__
+#ifndef HOUND_ROCKALL_ADAPTOR_H
+#define HOUND_ROCKALL_ADAPTOR_H
 
 #include <string.h>
 #include <assert.h>

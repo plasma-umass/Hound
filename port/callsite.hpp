@@ -1,5 +1,5 @@
-#ifndef HOUND_CALLSITE_H__
-#define HOUND_CALLSITE_H__
+#ifndef HOUND_CALLSITE_H
+#define HOUND_CALLSITE_H
 
 #if defined(_WIN32)
 

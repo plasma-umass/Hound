@@ -1,5 +1,5 @@
-#ifndef _PHKMALLOCHEAP_H_
-#define _PHKMALLOCHEAP_H_
+#ifndef HOUND_PHKMALLOCHEAP_H
+#define HOUND_PHKMALLOCHEAP_H
 
 extern "C" {
 	void * phkmalloc(size_t);

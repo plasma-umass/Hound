@@ -7,8 +7,8 @@
  * @note   Copyright (C) 2005 by Emery Berger, University of Massachusetts Amherst.
  */
 
-#ifndef HOUND_STATICIF_H_
-#define HOUND_STATICIF_H_
+#ifndef HOUND_STATICIF_H
+#define HOUND_STATICIF_H
 
 template <bool b, int a, int c>
 class StaticIf;

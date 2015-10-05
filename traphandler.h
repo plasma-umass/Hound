@@ -1,5 +1,5 @@
-#ifndef TRAP_HANDLER_H__
-#define TRAP_HANDLER_H__
+#ifndef TRAP_HANDLER_H
+#define TRAP_HANDLER_H
 
 void EnableSignalHandler();
 void DisableSignalHandler();
