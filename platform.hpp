@@ -53,9 +53,9 @@ static USHORT
 #else // __GNU_C__
 #include <string.h>
 #include <stdio.h>
-#include "localmallocheap.h"
-#include "RockallAdaptor.hpp"
-#include "port/phkmallocheap.h"
+//#include "localmallocheap.h"
+//#include "RockallAdaptor.hpp"
+//#include "port/phkmallocheap.h"
 //typedef RockallAdaptor<HL::LeaMallocHeap> BaseHeapType;
 //typedef RockallAdaptor<HL::LocalMallocHeap> BaseHeapType;
 //typedef RockallAdaptor<HL::PhkMallocHeap> BaseHeapType;
@@ -63,7 +63,7 @@ static USHORT
 #include "largeheap.h"
 #include "combineheap.h"
 
-typedef RockallAdaptor<CombineHeap<HL::PhkMallocHeap,LargeHeap, 1024*64> > BaseHeapType;
+//typedef RockallAdaptor<CombineHeap<HL::PhkMallocHeap,LargeHeap, 1024*64> > BaseHeapType;
 
 #define DECLSPEC
 #define UNREFERENCED_PARAMETER(foo)
