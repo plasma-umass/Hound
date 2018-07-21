@@ -4,9 +4,9 @@
 #include <psapi.h>
 #endif
 
-#include "plugheap.hpp"
 #include "constants.h"
 #include "output.hpp"
+#include "plugheap.hpp"
 
 #include "traphandler.h"
 
@@ -23,15 +23,17 @@ int _mergedblocks = 0;
 static CALL_STACK cs;
 
 DECLSPEC void Pin(LPCVOID ptr) {
-	AOCommon *bl = AOCommon::fromPtr(ptr);
-	if(!bl) return;
+  AOCommon *bl = AOCommon::fromPtr(ptr);
+  if (!bl)
+    return;
 
-	bl->pin();
+  bl->pin();
 }
 
 DECLSPEC void Unpin(LPCVOID ptr) {
-	AOCommon *bl = AOCommon::fromPtr(ptr);
-	if(!bl) return;
+  AOCommon *bl = AOCommon::fromPtr(ptr);
+  if (!bl)
+    return;
 
-	bl->unpin();
+  bl->unpin();
 }

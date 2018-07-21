@@ -11,15 +11,15 @@ class HeapBase : public BlockListImpl<AOCommon> {
 public:
   SPINLOCK lock;
 
-  void * operator new(size_t sz) {
-    return GlobalMetadataHeap::getInstance()->New(sz,NULL,true);
+  void *operator new(size_t sz) {
+    return GlobalMetadataHeap::getInstance()->New(sz, NULL, true);
   }
 
-  void * operator new(size_t sz,void * ptr) {
+  void *operator new(size_t sz, void *ptr) {
     return ptr;
   }
-  
-  void operator delete(void * ptr) {
+
+  void operator delete(void *ptr) {
     GlobalMetadataHeap::getInstance()->Delete(ptr);
   }
 };

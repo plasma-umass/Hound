@@ -24,7 +24,7 @@ static const size_t MIN_ALLOC = 16;
 static const size_t LOG_MIN_ALLOC = StaticLog<MIN_ALLOC>::VALUE;
 
 // Maximum allocation size in AOBlock
-static const size_t BPTR_MAX_ALLOC = AO_BLOCK_SIZE/2;
+static const size_t BPTR_MAX_ALLOC = AO_BLOCK_SIZE / 2;
 static const size_t LOG_BPTR_MAX_ALLOC = StaticLog<BPTR_MAX_ALLOC>::VALUE;
 
 // Granularity to allocate memory from the system
@@ -41,10 +41,10 @@ static const size_t AOCHUNK_MIN_ALLOC = 4096;
 static const size_t LOG_AOCHUNK_MIN_ALLOC = StaticLog<AOCHUNK_MIN_ALLOC>::VALUE;
 
 // Number of stack frames to capture
-static const size_t STACK_DEPTH = 4;  
+static const size_t STACK_DEPTH = 4;
 
 // Size classes for segfits allocation
-static const size_t NUM_SIZE_CLASSES = LOG_BPTR_MAX_ALLOC-LOG_MIN_ALLOC+1+1; // last +1 for large objects
-static const size_t AOLO_SIZE_CLASS = NUM_SIZE_CLASSES-1;
+static const size_t NUM_SIZE_CLASSES = LOG_BPTR_MAX_ALLOC - LOG_MIN_ALLOC + 1 + 1;  // last +1 for large objects
+static const size_t AOLO_SIZE_CLASS = NUM_SIZE_CLASSES - 1;
 
 #endif

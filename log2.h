@@ -3,30 +3,26 @@
 
 #include <stdlib.h>
 
-  /// Quickly calculate the CEILING of the log (base 2) of the argument.
+/// Quickly calculate the CEILING of the log (base 2) of the argument.
 #if defined(_WIN32)
-  static inline int log2 (size_t sz) 
-  {
-    int retval;
-    sz = (sz << 1) - 1;
-    __asm {
+static inline int log2(size_t sz) {
+  int retval;
+  sz = (sz << 1) - 1;
+  __asm {
       bsr eax, sz
 	mov retval, eax
-	}
-    return retval;
   }
+  return retval;
+}
 #elif defined(__GNUC__) && defined(__i386__)
-  static inline int log2 (size_t sz) 
-  {
-    int retval;
-    sz = (sz << 1) - 1;
-    asm volatile ("bsrl %1,%0"
-		  : "=r" (retval)
-		  : "r" (sz));
-    return retval;
-  }
+static inline int log2(size_t sz) {
+  int retval;
+  sz = (sz << 1) - 1;
+  asm volatile("bsrl %1,%0" : "=r"(retval) : "r"(sz));
+  return retval;
+}
 #else
-  static inline int log2 (size_t v) {
+static inline int log2(size_t v) {
 #if 0
     static const int MultiplyDeBruijnBitPosition[32] = 
       {
@@ -43,15 +39,15 @@
     // 0x218A392CD3D5DBF is a 64-bit deBruijn number.
     return MultiplyDeBruijnBitPosition[(v * 0x077CB531UL) >> 27];
 #else
-    int log = 0;
-    int value = 1;
-    while (value < v) {
-      value <<= 1;
-      log++;
-    }
-    return log;
-#endif
+  int log = 0;
+  int value = 1;
+  while (value < v) {
+    value <<= 1;
+    log++;
   }
+  return log;
+#endif
+}
 #endif
 
 #endif

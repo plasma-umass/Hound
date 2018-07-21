@@ -7,7 +7,7 @@ public:
 
   typedef BlockListImpl<AOCommon>::Node Node;
 
-  virtual void reheatBlock(Node * block) = 0;
+  virtual void reheatBlock(Node *block) = 0;
 };
 
 #endif

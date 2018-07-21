@@ -19,4 +19,4 @@ public:
 
 typedef HL::RecursiveLockType<HL::SpinLockType> SPINLOCK;
 
-#endif // __PORT_SPINLOCK_H__
+#endif  // __PORT_SPINLOCK_H__

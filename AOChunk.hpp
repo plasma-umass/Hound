@@ -1,9 +1,9 @@
 #ifndef HOUND_AO_CHUNK_H
 #define HOUND_AO_CHUNK_H
 
-#include "platform.hpp"
 #include <assert.h>
 #include <bitset>
+#include "platform.hpp"
 
 #include "AOCommon.hpp"
 
@@ -16,42 +16,46 @@
 
 class AOChunk {
 public:
-	AOChunk(size_t sz, size_t grain);
-	~AOChunk();
+  AOChunk(size_t sz, size_t grain);
+  ~AOChunk();
 
-	void * operator new(size_t sz);
-	void operator delete(void * ptr);
+  void *operator new(size_t sz);
+  void operator delete(void *ptr);
 
-	static AOChunk * fromPtr(LPCVOID);
+  static AOChunk *fromPtr(LPCVOID);
 
-	PVOID New(AOCommon * bl);
-	BOOL Delete(PVOID);
+  PVOID New(AOCommon *bl);
+  BOOL Delete(PVOID);
 
-	AOCommon * ptrToBlock(LPCVOID);
+  AOCommon *ptrToBlock(LPCVOID);
 
-	size_t getGrain() const { return _grain; }
-	size_t getSize() const { return _sz; }
+  size_t getGrain() const {
+    return _grain;
+  }
+  size_t getSize() const {
+    return _sz;
+  }
 
 private:
-	size_t getIndex(LPCVOID);
+  size_t getIndex(LPCVOID);
 
-	size_t _sz;
-	DWORD _start;
-	size_t _grain;
-	size_t _numelts;
-	AOCommon ** _elts;
+  size_t _sz;
+  DWORD _start;
+  size_t _grain;
+  size_t _numelts;
+  AOCommon **_elts;
 
-	size_t _pop;
-	size_t _ptr;
+  size_t _pop;
+  size_t _ptr;
 
-	AOChunk * _next;
-	AOChunk * _prev;
+  AOChunk *_next;
+  AOChunk *_prev;
 
-	std::bitset<32> _used;
+  std::bitset<32> _used;
 
-	static AOChunk * _liveChunks[1ul<<(32-LOG_VALLOC_SIZE)];
+  static AOChunk *_liveChunks[1ul << (32 - LOG_VALLOC_SIZE)];
 
-	friend class BlockFactory;
+  friend class BlockFactory;
 };
 
 #endif

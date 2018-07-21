@@ -7,48 +7,44 @@
  * @author Emery Berger <http://www.cs.umass.edu/~emery>
  */
 
-template <int ChunkSize,
-	  class super>
+template <int ChunkSize, class super>
 class BumpAlloc : public super {
 public:
+  BumpAlloc(void) : _bump(NULL), _remaining(0) {
+  }
 
-  BumpAlloc (void)
-    : _bump (NULL),
-      _remaining (0)
-  {}
-
-  inline void * malloc (size_t sz) {
+  inline void *malloc(size_t sz) {
     // If there's not enough space left to fulfill this request, get
     // another chunk.
     if (_remaining < sz) {
       refill(sz);
     }
-    char * old = _bump;
+    char *old = _bump;
     _bump += sz;
     _remaining -= sz;
     return old;
   }
 
   /// Free is disabled (we only bump, never reclaim).
-  inline bool free (void *) { return false; }
+  inline bool free(void *) {
+    return false;
+  }
 
 private:
-
   /// The bump pointer.
-  char * _bump;
+  char *_bump;
 
   /// How much space remains in the current chunk.
   size_t _remaining;
 
   // Get another chunk.
-  void refill (size_t sz) {
+  void refill(size_t sz) {
     if (sz < ChunkSize) {
       sz = ChunkSize;
     }
-    _bump = (char *) super::malloc (sz);
+    _bump = (char *)super::malloc(sz);
     _remaining = sz;
   }
-
 };
 
 #endif
