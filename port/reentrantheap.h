@@ -9,38 +9,33 @@
 template <class Super, int BufferSize = 65536>
 class ReentrantHeap : public Super {
 public:
-  ReentrantHeap (void)
-    : _inMalloc (false),
-      _bufferPosition (0),
-      _remaining (BufferSize)
-  {
+  ReentrantHeap(void) : _inMalloc(false), _bufferPosition(0), _remaining(BufferSize) {
     _initialized = true;
   }
 
-  void * malloc (size_t sz) {
+  void *malloc(size_t sz) {
     if (_inMalloc || !_initialized) {
-      return nextChunk (sz);
+      return nextChunk(sz);
     } else {
       _inMalloc = true;
-      void * ptr = Super::malloc (sz);
+      void *ptr = Super::malloc(sz);
       _inMalloc = false;
       return ptr;
     }
   }
 
-  inline void free (void * ptr) {
+  inline void free(void *ptr) {
     if (!_inMalloc) {
-      Super::free (ptr);
+      Super::free(ptr);
     }
   }
 
 private:
-
-  void * nextChunk (size_t sz) {
+  void *nextChunk(size_t sz) {
     if (_remaining < sz) {
       return NULL;
     } else {
-      void * ptr = &_buffer[_bufferPosition];
+      void *ptr = &_buffer[_bufferPosition];
       _bufferPosition += sz;
       _remaining -= sz;
       return ptr;
@@ -62,6 +57,5 @@ private:
   /// Is the heap initialized?
   bool _initialized;
 };
-
 
 #endif

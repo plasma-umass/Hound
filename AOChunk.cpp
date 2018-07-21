@@ -1,126 +1,124 @@
 #include "mmapwrapper.h"
 
 #include "AOChunk.hpp"
-#include "global_metadata_heap.hpp"
 #include "block_factory.hpp"
+#include "global_metadata_heap.hpp"
 
-AOChunk * AOChunk::_liveChunks[1ul<<(32-LOG_VALLOC_SIZE)];
+AOChunk *AOChunk::_liveChunks[1ul << (32 - LOG_VALLOC_SIZE)];
 
-AOChunk * AOChunk::fromPtr(LPCVOID ptr) {
-	AOChunk * bl = _liveChunks[(DWORD)ptr>>LOG_VALLOC_SIZE];
+AOChunk *AOChunk::fromPtr(LPCVOID ptr) {
+  AOChunk *bl = _liveChunks[(DWORD)ptr >> LOG_VALLOC_SIZE];
 
-	return bl;
+  return bl;
 }
 
-void * AOChunk::operator new(size_t sz) {
-	return GlobalMetadataHeap::getInstance()->New(sz);
+void *AOChunk::operator new(size_t sz) {
+  return GlobalMetadataHeap::getInstance()->New(sz);
 }
 
-void AOChunk::operator delete(void * ptr) {
-	GlobalMetadataHeap::getInstance()->Delete(ptr);
+void AOChunk::operator delete(void *ptr) {
+  GlobalMetadataHeap::getInstance()->Delete(ptr);
 }
 
-
-AOChunk::AOChunk(size_t sz, size_t grain) : _sz(sz), _grain(grain), _numelts(sz/grain),
-		_pop(0), _ptr(0) {
-	//_start = (DWORD)VirtualAlloc(NULL,
-	//		  	 		  sz,
-	//			   		  MEM_RESERVE | MEM_COMMIT, 
-	//					  PAGE_READWRITE);
+AOChunk::AOChunk(size_t sz, size_t grain) : _sz(sz), _grain(grain), _numelts(sz / grain), _pop(0), _ptr(0) {
+  //_start = (DWORD)VirtualAlloc(NULL,
+  //		  	 		  sz,
+  //			   		  MEM_RESERVE | MEM_COMMIT,
+  //					  PAGE_READWRITE);
 
   // this code isn't used right?
   abort();
 
   _start = (DWORD)HL::MmapWrapper::map(sz);
-  fprintf(stderr,"new chusdfnk: 0x%x, size %d\n",_start,sz);
+  fprintf(stderr, "new chusdfnk: 0x%x, size %d\n", _start, sz);
 
-	assert(_numelts <= 32);
+  assert(_numelts <= 32);
 
-	_elts = (AOCommon **)GlobalMetadataHeap::getInstance()->New(sizeof(PVOID)*_numelts,NULL,true);
+  _elts = (AOCommon **)GlobalMetadataHeap::getInstance()->New(sizeof(PVOID) * _numelts, NULL, true);
 
-	size_t chunkSpan = ((sz+VALLOC_GRAIN-1)/VALLOC_GRAIN);
+  size_t chunkSpan = ((sz + VALLOC_GRAIN - 1) / VALLOC_GRAIN);
 
-	for(UINT i = 0; i < chunkSpan; i++) {
-		_liveChunks[((DWORD)_start>>LOG_VALLOC_SIZE) + i] = this;
-	}
+  for (UINT i = 0; i < chunkSpan; i++) {
+    _liveChunks[((DWORD)_start >> LOG_VALLOC_SIZE) + i] = this;
+  }
 }
 
 AOChunk::~AOChunk() {
-	GlobalMetadataHeap::getInstance()->Delete(_elts);
+  GlobalMetadataHeap::getInstance()->Delete(_elts);
 
-	assert(_liveChunks[(DWORD)_start>>LOG_VALLOC_SIZE]);
+  assert(_liveChunks[(DWORD)_start >> LOG_VALLOC_SIZE]);
 
-	size_t chunkSpan = ((_sz+VALLOC_GRAIN-1)/VALLOC_GRAIN);
+  size_t chunkSpan = ((_sz + VALLOC_GRAIN - 1) / VALLOC_GRAIN);
 
-	for(UINT i = 0; i < chunkSpan; i++) {
-		_liveChunks[((DWORD)_start>>LOG_VALLOC_SIZE) + i] = NULL;
-	}
+  for (UINT i = 0; i < chunkSpan; i++) {
+    _liveChunks[((DWORD)_start >> LOG_VALLOC_SIZE) + i] = NULL;
+  }
 
-  HL::MmapWrapper::unmap((PVOID)_start,_sz);
+  HL::MmapWrapper::unmap((PVOID)_start, _sz);
 
-	//VirtualFree((LPVOID)_start,0,MEM_RELEASE);
+  // VirtualFree((LPVOID)_start,0,MEM_RELEASE);
 }
 
-PVOID AOChunk::New(AOCommon * bl) {
-	DWORD ret; 
+PVOID AOChunk::New(AOCommon *bl) {
+  DWORD ret;
 
-	assert(_pop < _numelts);
+  assert(_pop < _numelts);
 
-	while(_used.test(_ptr)) {
-		_ptr++;
-		_ptr %= _numelts;
-	}
+  while (_used.test(_ptr)) {
+    _ptr++;
+    _ptr %= _numelts;
+  }
 
-	_pop++;
-	ret = _start + _grain*_ptr;
-	_elts[_ptr] = bl;
+  _pop++;
+  ret = _start + _grain * _ptr;
+  _elts[_ptr] = bl;
 
-	_used.set(_ptr);
+  _used.set(_ptr);
 
-	if(_pop == _numelts && _numelts > 1) {
-		// full, so remove from free list in block factory
-		BlockFactory::getInstance()->RemoveChunkFromList(this);
-	}
+  if (_pop == _numelts && _numelts > 1) {
+    // full, so remove from free list in block factory
+    BlockFactory::getInstance()->RemoveChunkFromList(this);
+  }
 
-	return (PVOID)ret;
+  return (PVOID)ret;
 }
 
 size_t AOChunk::getIndex(LPCVOID ptr) {
-	char * cptr = (char *)ptr;
+  char *cptr = (char *)ptr;
 
-	cptr -= _start;
+  cptr -= _start;
 
-	size_t idx = (size_t)cptr / _grain;
-	assert(idx >= 0);
-	assert(idx < _numelts);
-	assert(_used.test(idx));
+  size_t idx = (size_t)cptr / _grain;
+  assert(idx >= 0);
+  assert(idx < _numelts);
+  assert(_used.test(idx));
 
-	return idx;
+  return idx;
 }
 
 BOOL AOChunk::Delete(PVOID ptr) {
-	size_t idx = getIndex(ptr);
+  size_t idx = getIndex(ptr);
 
-	_used.reset(idx);
-	_elts[idx] = NULL;
+  _used.reset(idx);
+  _elts[idx] = NULL;
 
-	if(_pop == _numelts && _numelts > 1) {
-		BlockFactory::getInstance()->AddChunkToList(this);	
-	}
+  if (_pop == _numelts && _numelts > 1) {
+    BlockFactory::getInstance()->AddChunkToList(this);
+  }
 
-	_pop--;
+  _pop--;
 
-	if(_pop == 0) {
-		if(_numelts > 1)
-			BlockFactory::getInstance()->RemoveChunkFromList(this);
-		delete this;
-	}
+  if (_pop == 0) {
+    if (_numelts > 1)
+      BlockFactory::getInstance()->RemoveChunkFromList(this);
+    delete this;
+  }
 
-	return true;
+  return true;
 }
 
-AOCommon * AOChunk::ptrToBlock(LPCVOID ptr) {
-	size_t idx = getIndex(ptr);
+AOCommon *AOChunk::ptrToBlock(LPCVOID ptr) {
+  size_t idx = getIndex(ptr);
 
-	return _elts[idx];
+  return _elts[idx];
 }

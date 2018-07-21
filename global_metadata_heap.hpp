@@ -6,9 +6,9 @@
 // class SuperHyperGlobalMetaHeap
 class GlobalMetadataHeap {
 public:
-  static BaseHeapType * getInstance() {
+  static BaseHeapType *getInstance() {
     static char buf[sizeof(BaseHeapType)];
-    static BaseHeapType * heap = new (buf) BaseHeapType(4<<20,true,false,false);
+    static BaseHeapType *heap = new (buf) BaseHeapType(4 << 20, true, false, false);
     return heap;
   }
 };

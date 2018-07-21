@@ -3,25 +3,25 @@
 /*
 
   Heap Layers: An Extensible Memory Allocation Infrastructure
-  
+
   Copyright (C) 2000-2012 by Emery Berger
   http://www.cs.umass.edu/~emery
   emery@cs.umass.edu
-  
+
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
-  
+
   This program is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
-  
+
   You should have received a copy of the GNU General Public License
   along with this program; if not, write to the Free Software
   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-  
+
 */
 
 #ifndef HL_FREELISTHEAP_H
@@ -45,41 +45,38 @@
 
 namespace HL {
 
-  template <class SuperHeap>
-  class FreelistHeap : public SuperHeap {
-  public:
-
-    inline void * malloc (size_t sz) {
-      // Check the free list first.
-      void * ptr = _freelist.get();
-      // If it's empty, get more memory;
-      // otherwise, advance the free list pointer.
-      if (ptr == 0) {
-        ptr = SuperHeap::malloc (sz);
-      }
-      return ptr;
+template <class SuperHeap>
+class FreelistHeap : public SuperHeap {
+public:
+  inline void *malloc(size_t sz) {
+    // Check the free list first.
+    void *ptr = _freelist.get();
+    // If it's empty, get more memory;
+    // otherwise, advance the free list pointer.
+    if (ptr == 0) {
+      ptr = SuperHeap::malloc(sz);
     }
+    return ptr;
+  }
 
-    inline void free (void * ptr) {
-      if (ptr == 0) {
-        return;
-      }
-      _freelist.insert (ptr);
+  inline void free(void *ptr) {
+    if (ptr == 0) {
+      return;
     }
+    _freelist.insert(ptr);
+  }
 
-    inline void clear (void) {
-      void * ptr;
-      while ((ptr = _freelist.get())) {
-        SuperHeap::free (ptr);
-      }
+  inline void clear(void) {
+    void *ptr;
+    while ((ptr = _freelist.get())) {
+      SuperHeap::free(ptr);
     }
+  }
 
-  private:
+private:
+  FreeSLList _freelist;
+};
 
-    FreeSLList _freelist;
-
-  };
-
-}
+}  // namespace HL
 
 #endif

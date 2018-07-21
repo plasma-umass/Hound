@@ -9,21 +9,22 @@ class AOCommon;
 class PEntry {
 public:
   PEntry();
-  AOCommon * m[1 << 10];
+  AOCommon *m[1 << 10];
 };
 
 class PageTable {
 public:
-  AOCommon * get(void * p);
-  void set(void *p, AOCommon * entry, size_t);
-  void clear(void * p, size_t);
+  AOCommon *get(void *p);
+  void set(void *p, AOCommon *entry, size_t);
+  void clear(void *p, size_t);
 
-  static PageTable * getInstance() {
-    //static PageTable * ptbl = new PageTable();
+  static PageTable *getInstance() {
+    // static PageTable * ptbl = new PageTable();
     static PageTable ptbl;
-    //fprintf(stderr,"instance: %p\n",ptbl);
+    // fprintf(stderr,"instance: %p\n",ptbl);
     return &ptbl;
   }
+
 private:
   PageTable();
 
@@ -32,7 +33,7 @@ private:
 
   // XXX hardcoded for 32 bit VADDR, 4K page
 
-  PEntry * m[1 << 10];
+  PEntry *m[1 << 10];
 
   unsigned long _initialized;
 };

@@ -20,11 +20,12 @@
 
 class MmapAlloc {
 public:
-  static void * malloc (size_t sz) {
-    void * ptr = HL::MmapWrapper::map (sz);
+  static void *malloc(size_t sz) {
+    void *ptr = HL::MmapWrapper::map(sz);
     return ptr;
   }
-  static void free (void *) {}
+  static void free(void *) {
+  }
 };
 
 #endif

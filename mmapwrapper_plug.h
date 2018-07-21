@@ -3,21 +3,21 @@
 /*
 
   Heap Layers: An Extensible Memory Allocation Infrastructure
-  
+
   Copyright (C) 2000-2005 by Emery Berger
   http://www.cs.umass.edu/~emery
   emery@cs.umass.edu
-  
+
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
-  
+
   This program is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
-  
+
   You should have received a copy of the GNU General Public License
   along with this program; if not, write to the Free Software
   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
@@ -35,11 +35,11 @@ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*/
 #include <windows.h>
 #else
 // UNIX
-#include <sys/types.h>
-#include <sys/stat.h>
 #include <fcntl.h>
-#include <unistd.h>
 #include <sys/mman.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <unistd.h>
 #endif
 
 #if HL_EXECUTABLE_HEAP
@@ -54,26 +54,25 @@ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*/
 
 class MmapWrapperPlug {
 public:
+#if defined(_WIN32)
 
-#if defined(_WIN32) 
-  
   // Microsoft Windows has 4K pages aligned to a 64K boundary.
   enum { Size = 4 * 1024 };
   enum { Alignment = 64 * 1024 };
 
-  static void * map (size_t sz) {
-    void * ptr;
+  static void *map(size_t sz) {
+    void *ptr;
 #if HL_EXECUTABLE_HEAP
     const int permflags = PAGE_EXECUTE_READWRITE;
 #else
     const int permflags = PAGE_READWRITE;
 #endif
-    ptr = VirtualAlloc (NULL, sz, MEM_RESERVE | MEM_COMMIT | MEM_TOP_DOWN, permflags);
-    return  ptr;
+    ptr = VirtualAlloc(NULL, sz, MEM_RESERVE | MEM_COMMIT | MEM_TOP_DOWN, permflags);
+    return ptr;
   }
-  
-  static void unmap (void * ptr, size_t) {
-    VirtualFree (ptr, 0, MEM_RELEASE);
+
+  static void unmap(void *ptr, size_t) {
+    VirtualFree(ptr, 0, MEM_RELEASE);
   }
 
 #else
@@ -88,22 +87,21 @@ public:
   enum { Alignment = 4 * 1024 };
 #endif
 
-  static void * map (size_t sz) {
-
+  static void *map(size_t sz) {
     if (sz == 0) {
       return NULL;
     }
 
-    void * ptr;
+    void *ptr;
 
 #if defined(MAP_ALIGN) && defined(MAP_ANON)
     // Request memory aligned to the Alignment value above.
-    ptr = mmap ((char *) Alignment, sz, HL_MMAP_PROTECTION_MASK, MAP_SHARED | MAP_ALIGN | MAP_ANON, -1, 0);
+    ptr = mmap((char *)Alignment, sz, HL_MMAP_PROTECTION_MASK, MAP_SHARED | MAP_ALIGN | MAP_ANON, -1, 0);
 #elif !defined(MAP_ANONYMOUS)
-    static int fd = ::open ("/dev/zero", O_RDWR);
-    ptr = mmap (NULL, sz, HL_MMAP_PROTECTION_MASK, MAP_SHARED, fd, 0);
+    static int fd = ::open("/dev/zero", O_RDWR);
+    ptr = mmap(NULL, sz, HL_MMAP_PROTECTION_MASK, MAP_SHARED, fd, 0);
 #else
-    ptr = mmap ((void *) 0, sz, HL_MMAP_PROTECTION_MASK, MAP_SHARED | MAP_ANONYMOUS, -1, 0);
+    ptr = mmap((void *)0, sz, HL_MMAP_PROTECTION_MASK, MAP_SHARED | MAP_ANONYMOUS, -1, 0);
 #endif
 
     if (ptr == MAP_FAILED) {
@@ -113,12 +111,11 @@ public:
     }
   }
 
-  static void unmap (void * ptr, size_t sz) {
-    munmap (reinterpret_cast<char *>(ptr), sz);
+  static void unmap(void *ptr, size_t sz) {
+    munmap(reinterpret_cast<char *>(ptr), sz);
   }
-   
-#endif
 
+#endif
 };
 
 #endif

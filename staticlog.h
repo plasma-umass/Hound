@@ -30,7 +30,7 @@ public:
 template <int N>
 class StaticLog {
 public:
-  enum { VALUE = StaticIf<(N > 1), StaticLog<N/2>::VALUE + 1, 0>::VALUE };
+  enum { VALUE = StaticIf<(N > 1), StaticLog<N / 2>::VALUE + 1, 0>::VALUE };
 };
 
 #endif

@@ -9,4 +9,4 @@ public:
   void FormatCallStack(char *buf, PVOID *functions, size_t buf_sz, int depth);
 };
 
-#endif // __CALLSTACK_H__
+#endif  // __CALLSTACK_H__

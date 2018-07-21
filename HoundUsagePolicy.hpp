@@ -1,7 +1,7 @@
 #ifndef HOUND_HOUND_USAGE_POLICY
 #define HOUND_HOUND_USAGE_POLICY
 
-template<class Super>
+template <class Super>
 class HoundUsagePolicy : public Super {
 public:
   bool testSlot(unsigned int slot) const {

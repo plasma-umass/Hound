@@ -10,10 +10,10 @@
 #undef GATHER_FRAG_STATS
 
 #ifdef USE_PIN
-  #define ENABLE_BLOCK_MERGE 0
+#define ENABLE_BLOCK_MERGE 0
 #else
-  #define ENABLE_BLOCK_MERGE 1
-#endif 
+#define ENABLE_BLOCK_MERGE 1
+#endif
 
 #define USE_NEW_VC 1
 
@@ -26,40 +26,43 @@ class VCFragManager;
 template <unsigned int N>
 class PageReuseFragManager;
 
-template<size_t N, template<unsigned int> class, size_t DELAY>
-  class FragManagerFilter;
+template <size_t N, template <unsigned int> class, size_t DELAY>
+class FragManagerFilter;
 
-template<size_t N> class AOBlock;
+template <size_t N>
+class AOBlock;
 
 template <unsigned int N>
 class FragManagerType {
- public:
+public:
 #if (USE_NEW_VC == 0)
   typedef VCFragManager<N> Type;
 #else
   typedef PageReuseFragManager<N> Type;
-  //typedef FragManagerFilter<N, PageReuseFragManager, 256> Type;
+  // typedef FragManagerFilter<N, PageReuseFragManager, 256> Type;
 #endif
 };
 
 class AOLargeObject;
 
-#include "AgingBlock.hpp"
 #include "AOLargeObject.hpp"
-#include "FragListBlock.hpp"
+#include "AgingBlock.hpp"
+#include "AOMergedBlock.hpp"
 #include "BptrAllocPolicy.hpp"
-#include "SingletonAllocPolicy.hpp"
+#include "FragListBlock.hpp"
 #include "HoundUsagePolicy.hpp"
+#include "AOBlock.hpp"
 #include "NewHoundUsagePolicy.hpp"
+#include "SingletonAllocPolicy.hpp"
 
-#include "oneheap.h"
-#include "freelistheap.h"
-#include "chunkheap.h"
+#include "heaps/buildingblock/chunkheap.h"
+#include "heaps/buildingblock/freelistheap.h"
+#include "heaps/utility/oneheap.h"
 #include "pageheap.h"
 
 // Source for fresh virtual memory (page blocks & large objects)
-typedef HL::OneHeap<HL::FreelistHeap<HL::ChunkHeap<256*1024, PageHeap<256*1024> > > > BlockSourceHeap;
-//typedef PageHeap<4*1024> BlockSourceHeap;
+typedef HL::OneHeap<HL::FreelistHeap<HL::ChunkHeap<256 * 1024, PageHeap<256 * 1024>>>> BlockSourceHeap;
+// typedef PageHeap<4*1024> BlockSourceHeap;
 
 #include "AgingQueue.hpp"
 
@@ -68,33 +71,34 @@ typedef HL::OneHeap<HL::FreelistHeap<HL::ChunkHeap<256*1024, PageHeap<256*1024> 
 #include "FreshBlockFactory.hpp"
 #include "RecyclingBlockFactory.hpp"
 
-#if (USE_NEW_VC == 1) 
-  #define UsagePolicy NewHoundUsagePolicy;
+#if (USE_NEW_VC == 1)
+#define UsagePolicy NewHoundUsagePolicy;
 #else
-  #define UsagePolicy HoundUsagePolicy;
+#define UsagePolicy HoundUsagePolicy;
 #endif
 
-#define _BlockType FragListBlock<N,AgingBlock<AgingQueue,BptrAllocPolicy<NewHoundUsagePolicy<AOBlock<N> > > > >
+#define _BlockType FragListBlock<N, AgingBlock<AgingQueue, BptrAllocPolicy<NewHoundUsagePolicy<AOBlock<N>>>>>
 //#define _BlockType BptrAllocPolicy<HoundUsagePolicy<AOBlock<N> > >
 
 template <size_t N>
 class BlockType : public _BlockType {
- public:
- BlockType() : _BlockType() {}
+public:
+  BlockType() : _BlockType() {
+  }
 };
 
 #include "rocklayer.hpp"
 
-#if (USE_NEW_VC == 1) 
-  typedef RecyclingBlockFactory<BlockType> BlockFactory;
+#if (USE_NEW_VC == 1)
+typedef RecyclingBlockFactory<BlockType> BlockFactory;
 #else
-  typedef FreshBlockFactory<BlockType> BlockFactory;
+typedef FreshBlockFactory<BlockType> BlockFactory;
 #endif
 
-typedef AgingBlock<AgingQueue,AOLargeObject> LargeObjectType;
-//typedef AOLargeObject LargeObjectType;
+typedef AgingBlock<AgingQueue, AOLargeObject> LargeObjectType;
+// typedef AOLargeObject LargeObjectType;
 
-template<class BlockFactory>
+template <class BlockFactory>
 class AOHeap;
 
 typedef AOHeap<BlockFactory> PerCallsiteHeapType;
@@ -107,11 +111,10 @@ typedef AOHeap<BlockFactory> PerCallsiteHeapType;
 #include "ArchipelagoCompaction.hpp"
 #include "ArchipelagoHeap.hpp"
 
-typedef 
-AgingBlock<AgingQueue,ArchipelagoCompaction<ArchipelagoAllocPolicy<PageBlock> > >
-//ArchipelagoAllocPolicy<PageBlock>
-BlockType;
+typedef AgingBlock<AgingQueue, ArchipelagoCompaction<ArchipelagoAllocPolicy<PageBlock>>>
+    // ArchipelagoAllocPolicy<PageBlock>
+    BlockType;
 
 #endif
 
-#endif // __CONFIG_H__
+#endif  // __CONFIG_H__

@@ -15,15 +15,14 @@ class StaticIf;
 
 template <int a, int b>
 class StaticIf<true, a, b> {
- public:
+public:
   enum { VALUE = a };
 };
 
 template <int a, int b>
 class StaticIf<false, a, b> {
- public:
+public:
   enum { VALUE = b };
 };
-
 
 #endif
