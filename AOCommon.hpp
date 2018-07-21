@@ -1,6 +1,8 @@
 #ifndef HOUND_AOCOMMON_H
 #define HOUND_AOCOMMON_H
 
+#include <mutex>
+
 #include "platform.hpp"
 #include <assert.h>
 
@@ -11,8 +13,6 @@
 #include "HeapBase.hpp"
 
 #include "sys/syscall.h"
-
-#include "util/guard.h"
 
 #include "port/callsite.hpp"
 
@@ -42,7 +42,7 @@ private:
 */
 
 //#define SYNCHRONIZED(s) Synchronized<AOHeap> __STRUCTURED_LOCK_##s(static_cast<AOHeap*>(s));
-#define SYNCHRONIZED(s) Guard<SPINLOCK>(s->lock);
+#define SYNCHRONIZED(s) std::lock_guard<SPINLOCK>(s->lock);
 
 class AOCommon {
 public:

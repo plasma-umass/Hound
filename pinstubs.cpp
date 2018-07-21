@@ -1,3 +1,5 @@
+#include "port/phkmallocheap.h"
+
 extern "C" {
 
 void plug_mmap(unsigned long) {}

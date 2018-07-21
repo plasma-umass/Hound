@@ -12,6 +12,7 @@
 #include <signal.h>
 #include <string.h>
 
+
 #include "rocklayer.hpp"
 #include "../plugheap.hpp"
 #include "ansiwrapper.h"
@@ -131,5 +132,5 @@ extern "C" {
 
 #include "../pinstubs.cpp"
 
-#include "../../heaplayers/wrapper.cpp"
+#include "../vendor/Heap-Layers/wrappers/gnuwrapper.cpp"
 

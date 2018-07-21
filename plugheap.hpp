@@ -5,6 +5,7 @@
 
 #include "global_metadata_heap.hpp"
 
+#include "constants.h"
 #include "AOHeap.hpp"
 #include "metadata_map.hpp"
 #include "callsite.hpp"
@@ -20,11 +21,13 @@ extern uint64_t global_allocs;
 DECLSPEC void Pin(LPCVOID ptr);
 DECLSPEC void Unpin(LPCVOID ptr);
 
-#define PLUG_SYNCH Guard<SPINLOCK> __SYNCH_THING(_mutex);
+#define PLUG_SYNCH std::lock_guard<SPINLOCK> __SYNCH_THING(_mutex);
 
 template<class PerCallsiteHeap>
 class PlugHeap {
 public:
+  enum { Alignment = MIN_ALLOC };
+
   PlugHeap() : AppHeap(4<<20,true,false,false), _sitemap(), _locked(0), _tid(0) { }
   
   ~PlugHeap();

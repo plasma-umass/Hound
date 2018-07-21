@@ -6,8 +6,6 @@
 
 #include "pinstubs.hpp"
 
-#include "util/guard.h"
-
 #include <assert.h>
 #include <stdio.h>
 

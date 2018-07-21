@@ -39,7 +39,6 @@
 #include <map>
 #endif
 
-#include "sassert.h"
 #include "mmapwrapper_plug.h"
 
 #include <new>

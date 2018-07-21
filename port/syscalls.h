@@ -13,7 +13,7 @@
 #include <time.h>
 #include <utime.h>
 #include <unistd.h>
-#include <attr/xattr.h>
+#include <sys/xattr.h>
 //#include <linux/aio.h>
 //#include <linux/futex.h>
 #include <linux/unistd.h>
@@ -1720,15 +1720,15 @@ extern "C" {
                                 unsigned long flags);
 */
 
-	pid_t wait(void * status) {
-		return MemTracer::getMemTracer()->wait((int *) status);
+	pid_t wait(int * status) {
+		return MemTracer::getMemTracer()->wait(status);
 	}
 
-	pid_t wait3(void * status, int options, struct rusage * rusage) {
+	pid_t wait3(int * status, int options, struct rusage * rusage) {
 		return MemTracer::getMemTracer()->wait3((int *) status, options, rusage);
 	}
 
-	pid_t wait4(pid_t pid, void * status, int options, struct rusage * rusage) {
+	pid_t wait4(pid_t pid, int * status, int options, struct rusage * rusage) {
 		return MemTracer::getMemTracer()->wait4(pid, (int *) status, options, rusage);
 	}
 

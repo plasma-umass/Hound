@@ -3,6 +3,39 @@
 
 #undef ELIDE_FREE // 0x698baf14
 
+// from heap layers
+#if defined(_MSC_VER)
+
+// Microsoft Visual Studio
+#pragma inline_depth(255)
+#define INLINE __forceinline
+//#define inline __forceinline
+#define NO_INLINE __declspec(noinline)
+#pragma warning(disable: 4530)
+#define MALLOC_FUNCTION
+#define RESTRICT
+
+#elif defined(__GNUC__)
+
+// GNU C
+
+#define NO_INLINE       __attribute__ ((noinline))
+#define INLINE          inline
+#define MALLOC_FUNCTION __attribute__((malloc))
+#define RESTRICT        __restrict__
+
+#else
+
+// All others
+
+#define NO_INLINE
+#define INLINE inline
+#define MALLOC_FUNCTION
+#define RESTRICT
+
+#endif
+
+
 // Create win32 type alises for GNU C
 #ifndef _WIN32
 typedef unsigned long ULONG;
@@ -51,13 +84,16 @@ static USHORT
                              );
 
 #else // __GNU_C__
+#include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
 //#include "localmallocheap.h"
-//#include "RockallAdaptor.hpp"
+#include "heaps/utility/localmallocheap.h"
+//#include "heaps/general/leamallocheap.h"
+#include "RockallAdaptor.hpp"
 //#include "port/phkmallocheap.h"
-//typedef RockallAdaptor<HL::LeaMallocHeap> BaseHeapType;
-//typedef RockallAdaptor<HL::LocalMallocHeap> BaseHeapType;
+// typedef RockallAdaptor<HL::LeaMallocHeap> BaseHeapType;
+typedef RockallAdaptor<HL::LocalMallocHeap> BaseHeapType;
 //typedef RockallAdaptor<HL::PhkMallocHeap> BaseHeapType;
 
 #include "largeheap.h"

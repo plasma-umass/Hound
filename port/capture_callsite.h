@@ -7,8 +7,8 @@
  * @note   Copyright (C) 2005 by Emery Berger, University of Massachusetts Amherst.
  */
 
-#ifndef HOUND_CALLSITE_H
-#define HOUND_CALLSITE_H
+#ifndef HOUND_CAPTURE_CALLSITE_H
+#define HOUND_CAPTURE_CALLSITE_H
 
 #include <link.h>
 #include <stdio.h>

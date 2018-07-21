@@ -52,9 +52,9 @@ class AOLargeObject;
 #include "HoundUsagePolicy.hpp"
 #include "NewHoundUsagePolicy.hpp"
 
-#include "oneheap.h"
-#include "freelistheap.h"
-#include "chunkheap.h"
+#include "heaps/utility/oneheap.h"
+#include "heaps/buildingblock/freelistheap.h"
+#include "heaps/buildingblock/chunkheap.h"
 #include "pageheap.h"
 
 // Source for fresh virtual memory (page blocks & large objects)

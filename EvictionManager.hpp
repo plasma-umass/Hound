@@ -23,7 +23,7 @@ public:
   EvictionManager() : _cold(this),_fault_ct(0), _tsz(0) {}
 
   void registerBlock(Node * bl) {
-    Guard<SPINLOCK> __lock(this->lock);
+    std::lock_guard<SPINLOCK> __lock(this->lock);
 
     _hot.registerBlock(bl);
 
@@ -35,7 +35,7 @@ public:
   }
 
   void removeBlock(Node * bl) {
-    Guard<SPINLOCK> __lock(this->lock);
+    std::lock_guard<SPINLOCK> __lock(this->lock);
 
     // we can never be the true parent
     assert(false);
@@ -50,7 +50,7 @@ public:
   // Called from _cold to move a block from _cold into _hot.
   // Block must already be removed from _cold.
   virtual void reheatBlock(Node * block) {
-    Guard<SPINLOCK> __lock(this->lock);
+    std::lock_guard<SPINLOCK> __lock(this->lock);
 
     _fault_ct++;
     updateSizeTarget();
