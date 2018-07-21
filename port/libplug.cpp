@@ -68,6 +68,30 @@ inline static TheCustomHeapType *getCustomHeap(void) {
 }
 
 extern "C" {
+void *xxmalloc(size_t sz) {
+  void *ptr = getCustomHeap()->malloc(sz);
+  if (ptr == nullptr) {
+    fprintf(stderr, "INTERNAL FAILURE.\n");
+    abort();
+  }
+  return ptr;
+}
+void xxfree(void *ptr) {
+  getCustomHeap()->free(ptr);
+}
+
+size_t xxmalloc_usable_size(void *ptr) {
+  return getCustomHeap()->getSize(ptr);
+}
+
+void xxmalloc_lock() {
+  // Undefined for Hound.
+}
+
+void xxmalloc_unlock() {
+  // Undefined for Hound.
+}
+
 /*
 sighandler_t signal(int signum, sighandler_t handler) {
   struct sigaction sa, osa;
