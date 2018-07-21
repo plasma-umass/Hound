@@ -1,6 +1,11 @@
 #ifndef HOUND_AOBLOCK_H
 #define HOUND_AOBLOCK_H
 
+#include <sys/mman.h>
+#include <unistd.h>
+
+#include "config.h"
+
 #include "PageBlock.hpp"
 #include "constants.h"
 #include "platform.hpp"
@@ -13,11 +18,6 @@
 #include "FragManagerFilter.hpp"
 #include "PageReuseFragManager.hpp"
 #include "VCFragManager.hpp"
-
-#include <sys/mman.h>
-#include <unistd.h>
-
-#include "config.h"
 
 #ifndef MREMAP_FIXED
 #define MREMAP_FIXED 2

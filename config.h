@@ -47,9 +47,11 @@ class AOLargeObject;
 
 #include "AOLargeObject.hpp"
 #include "AgingBlock.hpp"
+#include "AOMergedBlock.hpp"
 #include "BptrAllocPolicy.hpp"
 #include "FragListBlock.hpp"
 #include "HoundUsagePolicy.hpp"
+#include "AOBlock.hpp"
 #include "NewHoundUsagePolicy.hpp"
 #include "SingletonAllocPolicy.hpp"
 

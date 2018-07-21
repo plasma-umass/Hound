@@ -1,8 +1,6 @@
 #ifndef HOUND_FRESH_BLOCK_FACTORY_H
 #define HOUND_FRESH_BLOCK_FACTORY_H
 
-#include "AOBlock.hpp"
-
 #include "AgingBlock.hpp"
 
 // Allocates fresh AOBlocks (i.e. fresh, unaliased page)

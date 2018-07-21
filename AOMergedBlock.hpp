@@ -7,8 +7,6 @@
 #include "constants.h"
 #include "global_metadata_heap.hpp"
 
-#include "config.h"
-
 extern int saved_pages;
 extern int total_pages;
 extern int _mergedblocks;

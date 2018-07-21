@@ -1,6 +1,8 @@
 #ifndef HOUND_PAGE_BLOCK_H
 #define HOUND_PAGE_BLOCK_H
 
+#include "AOCommon.hpp"
+
 extern int total_pages;
 
 class PageBlock : public AOCommon {

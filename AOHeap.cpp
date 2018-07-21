@@ -1,5 +1,9 @@
 #include "platform.hpp"
 
+#include "config.h"
+
+#include "AOMergedBlock.hpp"
+
 #include <new>
 #include "AOBlock.hpp"
 #include "AOHeap.hpp"
