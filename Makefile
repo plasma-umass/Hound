@@ -37,6 +37,9 @@ $(ALL_SUBMODULES):
 	git submodule update --init
 	touch -c $@
 
+format:
+	clang-format -i *.h *.hpp *.cpp pin/*.cpp tests/*.cpp port/*.h port/*.c port/*.hpp port/*.cpp
+
 libprofinj.o: libprofinj.cpp profinj.hpp
 
 libplug.so: $(PLUG_OBS) $(DEPS) AOHeap.hpp
